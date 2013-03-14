@@ -11,5 +11,6 @@
 
 @interface JECViewController : UITableViewController
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+- (IBAction)NewNote:(id)sender;
 @property (strong, nonatomic) NSMutableArray *notes;
 @end

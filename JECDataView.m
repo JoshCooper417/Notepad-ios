@@ -27,7 +27,16 @@ MKPointAnnotation *pin;
 
 
 - (void)viewDidLoad
-{  _name.text = _currentEntry.title;
+{
+    
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
+    UIImage *pattern = [UIImage imageNamed:@"retina_wood.png"];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:pattern];
+}
+
+-(void) viewDidAppear:(BOOL)animated{
+    _name.text = _currentEntry.title;
     _description.text = _currentEntry.description;
     pin = [[MKPointAnnotation alloc] init];
     pin.coordinate = _currentEntry.location.coordinate;
@@ -35,9 +44,8 @@ MKPointAnnotation *pin;
     [self.map setCenterCoordinate:pin.coordinate];
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(pin.coordinate, 40, 40);
     [self.map setRegion:region];
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-  
+    [super viewDidAppear:animated];
+    
 }
 
 - (void)didReceiveMemoryWarning

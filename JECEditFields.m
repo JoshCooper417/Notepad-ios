@@ -47,6 +47,8 @@ int stage = 0;
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    UIImage *pattern = [UIImage imageNamed:@"retina_wood.png"];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:pattern];
 }
 
 - (void)didReceiveMemoryWarning
@@ -67,7 +69,7 @@ int stage = 0;
     _EnterTextField.text = @"";
     if(stage == 0){
     _currentEntry.title = text;
-    _InstructionsField.text = @"Enter your description";
+    _InstructionsField.text = @"What did you do there?";
         stage = 1;
          [_EnterTextField resignFirstResponder];
     }

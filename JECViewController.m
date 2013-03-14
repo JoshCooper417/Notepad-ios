@@ -26,8 +26,9 @@ CLLocation *userLoc;
 {
     NSLog(@"Here");
     self.notes = [[NSMutableArray alloc] init];
-    [self addNewOne];
     [super viewDidLoad];
+    UIImage *pattern = [UIImage imageNamed:@"retina_wood.png"];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:pattern];
 }
 
 -(void) viewDidAppear:(BOOL)animated{
@@ -38,7 +39,7 @@ CLLocation *userLoc;
 -(void) addNewOne
 {
     JECData *entry = [[JECData alloc] init];
-    entry.title = @"Make a new one";
+    entry.title = @"New Note";
     entry.assembled = false;
     [_notes addObject:entry];
     NSLog(@"array: %d", [self.notes count]);
@@ -74,8 +75,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     if(!([currentEntry.assembled isEqualToString:@"Yes"])){
     [self performSegueWithIdentifier:@"Edit Segue" sender:self];
-    
-    [self addNewOne];
+
     }
     else{
     
@@ -102,5 +102,8 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
         destination.currentEntry =
         _notes[[self.tableView indexPathForSelectedRow].row];
     }
+}
+- (IBAction)NewNote:(id)sender {
+        [self addNewOne];
 }
 @end
